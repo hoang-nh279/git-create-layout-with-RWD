@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xem Phim</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; background: #f7f7f7; }
+
+    /* Header */
+    .header {
+      background: #fff;
+      padding: 15px;
+      border-bottom: 1px solid #ddd;
+      position: fixed;  /* mức trung bình: giữ cố định */
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+    }
+    .header h1 { font-size: 24px; color: #d00; }
+
+    /* Head link */
+    .head-link {
+      background: #eee;
+      padding: 10px;
+      text-align: center;
+      margin-top: 60px; /* chừa chỗ cho header */
+    }
+    .head-link a {
+      margin: 0 15px;
+      text-decoration: none;  /* mức trung bình: bỏ gạch chân */
+      color: black;
+      font-weight: normal;
+      transition: 0.3s;
+    }
+    .head-link a:hover {
+      color: #d00;
+      font-weight: bold; /* mức trung bình: hover in đậm */
+    }
+
+    /* Content layout */
+    .content {
+      display: flex;
+      gap: 20px;
+      margin: 20px;
+    }
+    .left-content {
+      width: 30%;
+    }
+    .video-list {
+      background: white;
+      border: 1px solid #ddd;
+      margin-bottom: 15px;
+      padding: 10px;
+      cursor: pointer;
+    }
+    .video-list img {
+      width: 100%;
+    }
+    .video-list p {
+      margin-top: 5px;
+      font-size: 14px;
+    }
+
+    .right-content {
+      flex: 1;
+      background: white;
+      border: 1px solid #ddd;
+      padding: 15px;
+    }
+    .right-content iframe {
+      width: 100%;
+      height: 360px;
+      margin-bottom: 10px;
+    }
+
+    /* Footer */
+    .footer {
+      background: #eee;
+      text-align: center;
+      padding: 15px;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    /* Mức nâng cao: Responsive */
+    @media (max-width: 768px) {
+      .content {
+        flex-direction: column;
+      }
+      .left-content, .right-content {
+        width: 100%;
+      }
+      .header h1 {
+        font-size: 18px;
+      }
+      .head-link a {
+        display: inline-block;
+        margin: 5px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <h1>Phim Hoạt Hình</h1>
+</div>
+
+<!-- Head Link -->
+<div class="head-link">
+  <a href="#">Trang chủ</a>
+  <a href="#">Phim yêu thích</a>
+  <a href="#">Nhân vật</a>
+  <a href="#">Góp ý</a>
+</div>
+
+<!-- Content -->
+<div class="content">
+  <!-- Left menu -->
+  <div class="left-content">
+    <div class="video-list" onclick="loadVideo('VIDEO_ID1')">
+      <img src="thumb1.jpg" alt="">
+      <p>Video 1</p>
+    </div>
+    <div class="video-list" onclick="loadVideo('VIDEO_ID2')">
+      <img src="thumb2.jpg" alt="">
+      <p>Video 2</p>
+    </div>
+    <div class="video-list" onclick="loadVideo('VIDEO_ID3')">
+      <img src="thumb3.jpg" alt="">
+      <p>Video 3</p>
+    </div>
+  </div>
+
+  <!-- Right content -->
+  <div class="right-content">
+    <iframe id="mainVideo" src="https://www.youtube.com/embed/VIDEO_ID1" frameborder="0" allowfullscreen></iframe>
+    <h2>Tiêu đề Video</h2>
+    <p>Mô tả ngắn nội dung video...</p>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  © 2025 - Thiết kế web phimhoathinh.vn
+</div>
+
+<script>
+  // Chức năng đổi video khi click menu bên trái
+  function loadVideo(videoId) {
+    document.getElementById("mainVideo").src = "https://www.youtube.com/embed/" + videoId;
+  }
+</script>
+
+</body>
+</html>
